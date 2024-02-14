@@ -15,15 +15,15 @@ import javax.validation.constraints.NotBlank;
 public class UsuarioComum {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
     @NotBlank
     private String nome;
 
     @NotBlank
     @Column(unique = true)
-    private String cpfOrCnpj;
+    private String cpf;
 
     @NotBlank
     @Column(unique = true)

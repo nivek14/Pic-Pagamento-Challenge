@@ -1,8 +1,8 @@
 CREATE TABLE lojista (
-    id TEXT PRIMARY KEY UNIQUE NOT NULL,
-    nome TEXT NOT NULL,
-    cpfOrCnpj TEXT NOT NULL,
-    email TEXT NOT NULL,
-    password TEXT NOT NULL,
+    id INT PRIMARY KEY UNIQUE NOT NULL,
+    nome varchar(255) NOT NULL,
+    cpf varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    password varchar(255) NOT NULL,
     saldo FLOAT DEFAULT VALUE 0
 );

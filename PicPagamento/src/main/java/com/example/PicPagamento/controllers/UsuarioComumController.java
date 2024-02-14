@@ -24,17 +24,17 @@ public class UsuarioComumController {
         return allComum;
     }
 
-    @GetMapping
+    @GetMapping(path = "/nomes")
     public Iterable<UsuarioComum> getByName(@PathVariable String nome){
-        return usuarioComumRepository.findByName(nome);
+        return usuarioComumRepository.findByNome(nome);
     }
 
-    @GetMapping
-    public Iterable<UsuarioComum> getByCpfOrCnpj(@PathVariable String cpfOrCnpj){
-        return usuarioComumRepository.findByCpfOrCnjp(cpfOrCnpj);
+    @GetMapping(path = "/cpf")
+    public Iterable<UsuarioComum> getByCpf(@PathVariable String cpfOrCnpj){
+        return usuarioComumRepository.findByCpf(cpfOrCnpj);
     }
 
-    @GetMapping
+    @GetMapping(path = "/email")
     public Iterable<UsuarioComum> getByEmail(@PathVariable String email){
         return usuarioComumRepository.findByEmail(email);
     }
@@ -47,7 +47,7 @@ public class UsuarioComumController {
 
     @PutMapping
     public ResponseEntity updateUsuarioComum(@Valid UsuarioComum usuarioComum){
-        Optional<UsuarioComum> optionalUsuarioComum = usuarioComumRepository.findById(usuarioComum.getId());
+        Optional<UsuarioComum> optionalUsuarioComum = usuarioComumRepository.findById(String.valueOf(usuarioComum.getId()));
         if(optionalUsuarioComum.isPresent()){
             usuarioComumRepository.save(usuarioComum);
             return ResponseEntity.ok("Usuário atualizado com sucesso!");
@@ -59,7 +59,7 @@ public class UsuarioComumController {
 
     @DeleteMapping
     public ResponseEntity deleteUsuarioComum(@Valid UsuarioComum usuarioComum){
-        usuarioComumRepository.deleteById(usuarioComum.getId());
+        usuarioComumRepository.deleteById(String.valueOf(usuarioComum.getId()));
         return ResponseEntity.ok("Usuário deletado com sucesso!");
     }
 

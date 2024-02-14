@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioLojistaRepository extends JpaRepository<UsuarioLojista, String> {
 
-    public Iterable<UsuarioLojista> findByName(String nome);
-    public Iterable<UsuarioLojista> findByCpfOrCnjp(String cpfOrCnpj);
+    public Iterable<UsuarioLojista> findByNome(String nome);
+    public Iterable<UsuarioLojista> findByCpf(String cpfOrCnpj);
     public Iterable<UsuarioLojista> findByEmail(String email);
 
 }

@@ -24,17 +24,17 @@ public class UsuarioLojistaController {
         return allLojista;
     }
 
-    @GetMapping
+    @GetMapping(path = "/nome")
     public Iterable<UsuarioLojista> getByName(@PathVariable String nome){
-        return usuarioLojistaRepository.findByName(nome);
+        return usuarioLojistaRepository.findByNome(nome);
     }
 
-    @GetMapping
-    public Iterable<UsuarioLojista> getByCpfOrCnpj(@PathVariable String cpfOrCnpj){
-        return usuarioLojistaRepository.findByCpfOrCnjp(cpfOrCnpj);
+    @GetMapping(path = "/cpf")
+    public Iterable<UsuarioLojista> getByCpf(@PathVariable String cpfOrCnpj){
+        return usuarioLojistaRepository.findByCpf(cpfOrCnpj);
     }
 
-    @GetMapping
+    @GetMapping(path = "/email")
     public Iterable<UsuarioLojista> getByEmail(@PathVariable String email){
         return usuarioLojistaRepository.findByEmail(email);
     }
@@ -47,7 +47,7 @@ public class UsuarioLojistaController {
 
     @PutMapping
     public ResponseEntity updateUsuarioComum(@Valid UsuarioLojista usuarioLojista){
-        Optional<UsuarioLojista> optionalUsuarioLojista = usuarioLojistaRepository.findById(usuarioLojista.getId());
+        Optional<UsuarioLojista> optionalUsuarioLojista = usuarioLojistaRepository.findById(String.valueOf(usuarioLojista.getId()));
         if(optionalUsuarioLojista.isPresent()){
             usuarioLojistaRepository.save(usuarioLojista);
             return ResponseEntity.ok("Usuário atualizado com sucesso!");
@@ -59,7 +59,7 @@ public class UsuarioLojistaController {
 
     @DeleteMapping
     public ResponseEntity deleteUsuarioComum(@Valid UsuarioLojista usuarioLojista){
-        usuarioLojistaRepository.deleteById(usuarioLojista.getId());
+        usuarioLojistaRepository.deleteById(String.valueOf(usuarioLojista.getId()));
         return ResponseEntity.ok("Usuário deletado com sucesso!");
     }
 
