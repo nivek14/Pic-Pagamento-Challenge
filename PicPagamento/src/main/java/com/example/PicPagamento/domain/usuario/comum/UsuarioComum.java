@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Table(name = "comum")
-@Entity(name = "lojista")
+@Entity(name = "comum")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -31,5 +31,8 @@ public class UsuarioComum {
 
     @NotBlank
     private String password;
+
+    @Column(columnDefinition = "float default 0")
+    private float saldo;
 
 }

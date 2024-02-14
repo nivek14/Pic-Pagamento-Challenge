@@ -32,4 +32,7 @@ public class UsuarioLojista {
     @NotBlank
     private String password;
 
+    @Column(columnDefinition = "float default 0")
+    private float saldo;
+
 }
