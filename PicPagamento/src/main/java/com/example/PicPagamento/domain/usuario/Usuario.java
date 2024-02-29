@@ -1,21 +1,21 @@
-package com.example.PicPagamento.domain.usuario.comum;
+package com.example.PicPagamento.domain.usuario;
 
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-@Table(name = "comum")
-@Entity(name = "comum")
+@Table(name = "user")
+@Entity(name = "user")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
-public class UsuarioComum {
+public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotBlank
@@ -34,5 +34,8 @@ public class UsuarioComum {
 
     @Column(columnDefinition = "float default 0")
     private float saldo;
+
+    @Enumerated(EnumType.STRING)
+    private UsuarioTipo usuarioTipo;
 
 }
