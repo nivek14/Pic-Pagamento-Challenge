@@ -1,7 +1,7 @@
 package com.example.PicPagamento.controllers;
 
 import com.example.PicPagamento.domain.usuario.Usuario;
-import com.example.PicPagamento.domain.usuario.UsuarioRepository;
+import com.example.PicPagamento.repositories.UsuarioRepository;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,17 +25,17 @@ public class UsuarioController {
     }
 
     @GetMapping(path = "/nomes")
-    public Iterable<Usuario> getByName(@PathVariable String nome){
+    public Optional<Usuario> getByName(@PathVariable String nome){
         return usuarioRepository.findByNome(nome);
     }
 
     @GetMapping(path = "/cpf")
-    public Iterable<Usuario> getByCpf(@PathVariable String cpfOrCnpj){
-        return usuarioRepository.findByCpf(cpfOrCnpj);
+    public Optional<Usuario> getByDocumento(@PathVariable String documento){
+        return usuarioRepository.findByDocumento(documento);
     }
 
     @GetMapping(path = "/email")
-    public Iterable<Usuario> getByEmail(@PathVariable String email){
+    public Optional<Usuario> getByEmail(@PathVariable String email){
         return usuarioRepository.findByEmail(email);
     }
 

@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.math.BigDecimal;
 
 @Table(name = "user")
 @Entity(name = "user")
@@ -16,14 +17,14 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotBlank
     private String nome;
 
     @NotBlank
     @Column(unique = true)
-    private String cpf;
+    private String documento;
 
     @NotBlank
     @Column(unique = true)
@@ -33,7 +34,7 @@ public class Usuario {
     private String password;
 
     @Column(columnDefinition = "float default 0")
-    private float saldo;
+    private BigDecimal saldo;
 
     @Enumerated(EnumType.STRING)
     private UsuarioTipo usuarioTipo;
