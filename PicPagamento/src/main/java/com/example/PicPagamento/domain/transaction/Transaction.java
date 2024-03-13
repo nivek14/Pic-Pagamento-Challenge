@@ -1,10 +1,7 @@
 package com.example.PicPagamento.domain.transaction;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import org.apache.catalina.User;
+import com.example.PicPagamento.domain.usuario.Usuario;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Transaction {
 
@@ -26,11 +24,11 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "sender_id")
-    private User sender;
+    private Usuario sender;
 
     @ManyToOne
     @JoinColumn(name = "receiver_id")
-    private User receiver;
+    private Usuario receiver;
 
     private LocalDateTime timestamp;
 
